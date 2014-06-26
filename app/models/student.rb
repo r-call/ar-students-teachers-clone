@@ -1,19 +1,46 @@
 class Student < ActiveRecord::Base
-  # implement your Student model here
+  # Validations
   validates :email, presence: true
+
+  # Callbacks
   before_validation do
-    puts "before_validation: #{self.inspect}"
+    # self refers to the student record
+    puts "BEFORE VALIDATION"
+    puts "#{self.inspect}"
   end
 
-  before_create do |student|
-    puts "before_create: #{student.inspect}"
+  after_validation do
+    puts "AFTER VALIDATION"
+    puts "#{self.inspect}"
   end
 
-  before_save do |student|
-    puts "before_save: #{student.inspect}"
+  before_create do
+    puts "BEFORE CREATE"
+    puts "#{self.inspect}"
   end
 
-  before_destroy do |student|
-    puts "before_destroy: #{student.inspect}"
+  after_create do
+    puts "AFTER CREATE"
+    puts "#{self.inspect}"
+  end
+
+  before_save do
+    puts "BEFORE SAVE"
+    puts "#{self.inspect}"
+  end
+
+  after_save do
+    puts "AFTER SAVE"
+    puts "#{self.inspect}"
+  end
+
+  before_destroy do
+    puts "BEFORE DESTROY"
+    puts "#{self.inspect}"
+  end
+
+  after_destroy do
+    puts "AFTER DESTROY"
+    puts "#{self.inspect}"
   end
 end
