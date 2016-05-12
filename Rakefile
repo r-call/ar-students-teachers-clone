@@ -44,6 +44,7 @@ task 'db:populate' do
   AppConfig.establish_connection
   StudentsImporter.new.import
   # Invoke your TeachersImporter here
+  TeachersImporter.new.populate
 end
 
 desc 'Retrieves the current schema version number'
